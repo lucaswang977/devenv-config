@@ -6,10 +6,6 @@ On the development envrionment setup, my personal needs are:
 ## Memo of keybindings
 *Keep updating*
 
-### Zsh with Zellij
-* Float a window to execute some commands then hide: ctrl+p w
-* Lock the all the other keybindings from Zellij: ctrl+g
-
 ### NeoVim with LunarVim
 * <Space-sk> to show all the commands 
 * <Space-f> find files
@@ -23,14 +19,15 @@ On the development envrionment setup, my personal needs are:
 
 ## Development envrionment setup (Ubuntu operating system)
 
-### ZSH
+### ZSH & byobu
 ```bash
 # install zsh
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y zsh
+sudo apt install -y zsh byobu
 # install OhMyZsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+byobu-enable
 ```
 
 ### Development essentials
@@ -56,19 +53,6 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 ```zsh
 alias ls='exa'
 export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
-```
-
-### [Zellij - Terminal multiplexer](https://github.com/zellij-org/zellij)
-- Find the latest release package on this page: https://github.com/zellij-org/zellij/releases
-- Download and untar it and move it to $HOME/.local/bin
-```zsh
-tar xzvf zellij-aarch64-unknown-linux-musl.tar.gz
-mv zellij $HOME/.local/bin/
-# generate config file for customization
-mkdir -p ~/.config/zellij
-zellij setup --dump-config > ~/.config/zellij/config.kdl
-# make zellij autostart when login
-echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
 ```
 
 ### [NodeJS](https://github.com/nodesource/distributions/blob/master/README.md)
