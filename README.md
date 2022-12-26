@@ -77,18 +77,23 @@ mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 ```
 
-### [NeoVim unstable version](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
-*I choose the unstable version because the version in stable channel is only 0.7.x*
+### [NeoVim stable version](https://github.com/neovim/neovim/wiki/Building-Neovim)
+We have to compile the NeoVim manually because:
+- At this time, both ubuntu official package source and neovim-ppa source doesn't provide the stable 0.8.x version, we have to compile it manually.
+- On Apple Silicon the prebuilt packages do not contain the support for LuaJIT which is quite important to several NeoVim extensions.
 
 ```bash
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt-get update
-sudo apt-get install -y neovim
-sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+git clone https://github.com/neovim/neovim
+cd neovim
+git checkout stable
+make CMAKE_BUILD_TYPE=Release
+sudo make install
+sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/nvim 60
 sudo update-alternatives --config vi
-sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --install /usr/bin/vim vim /usr/local/bin/nvim 60
 sudo update-alternatives --config vim
-sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 60
 sudo update-alternatives --config editor
 ```
 
