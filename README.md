@@ -61,6 +61,7 @@ curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
+npm install -g prettier
 ```
 
 ### [NeoVim stable version](https://github.com/neovim/neovim/wiki/Building-Neovim)
@@ -89,3 +90,4 @@ sudo update-alternatives --config editor
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 ```
+- Download config.lua and replace your $HOME/.config/lvim/config.lua with it.
