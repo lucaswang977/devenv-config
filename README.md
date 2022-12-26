@@ -91,3 +91,5 @@ sudo update-alternatives --config editor
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 ```
 - Download config.lua and replace your $HOME/.config/lvim/config.lua with it.
+- Run :PackerSync
+- Uncomment the autocmd
