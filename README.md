@@ -8,6 +8,7 @@ On the development envrionment setup, my personal needs are:
 
 ### Zsh with Zellij
 * Float a window to execute some commands then hide: ctrl+p w
+* Lock the all the other keybindings from Zellij: ctrl+g
 
 ### NeoVim with LunarVim
 * <Space-sk> to show all the commands 
@@ -58,12 +59,13 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 ```
 
 ### [Zellij - Terminal multiplexer](https://github.com/zellij-org/zellij)
+- Find the latest release package on this page: https://github.com/zellij-org/zellij/releases
+- Download and untar it and move it to $HOME/.local/bin
 ```zsh
-# install Rust cargo
-curl https://sh.rustup.rs -sSf | sh
-cargo install --locked zellij
+tar xzvf zellij-aarch64-unknown-linux-musl.tar.gz
+mv zellij $HOME/.local/bin/
 # generate config file for customization
-mkdir ~/.config/zellij
+mkdir -p ~/.config/zellij
 zellij setup --dump-config > ~/.config/zellij/config.kdl
 # make zellij autostart when login
 echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
@@ -83,12 +85,14 @@ We have to compile the NeoVim manually because:
 - On Apple Silicon the prebuilt packages do not contain the support for LuaJIT which is quite important to several NeoVim extensions.
 
 ```bash
-sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake pkg-config unzip doxygen
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release
 sudo make install
+cd ..
+rm -rf neovim
 sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/nvim 60
 sudo update-alternatives --config vi
 sudo update-alternatives --install /usr/bin/vim vim /usr/local/bin/nvim 60
