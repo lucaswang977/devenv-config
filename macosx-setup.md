@@ -11,7 +11,7 @@
 * Choose the latest LTS version of Ubuntu to start
 
 ```bash
-multipass launch jammy -c 2 -n ubuntu-machine
+multipass launch jammy -c 8 -d 30G -m 4G -n ubuntu-machine
 multipass shell ubuntu-machine
 ```
 
