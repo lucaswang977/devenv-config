@@ -34,11 +34,11 @@ apt update
 apt download cros-ui-config # ignore any warning messages
 ar x cros-ui-config_0.15_all.deb data.tar.gz
 gunzip data.tar.gz
-tar f data.tar --delete ./etc/gtk-3.0/settings.ini
+tar f data.tar --delete etc/gtk-3.0/settings.ini
 gzip data.tar
 ar r cros-ui-config_0.15_all.deb data.tar.gz
 rm data.tar.gz
-apt install cros-guest-tools ./cros-ui-config_0.15_all.deb
+sudo apt install cros-guest-tools ./cros-ui-config_0.15_all.deb
 rm cros-ui-config_0.15_all.deb
 ```
 
