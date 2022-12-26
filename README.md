@@ -52,7 +52,7 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 ### Aliases and PATH modifications in .zshrc
 ```zsh
 alias ls='exa'
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.npm-global/bin
 ```
 
 ### [NodeJS](https://github.com/nodesource/distributions/blob/master/README.md)
