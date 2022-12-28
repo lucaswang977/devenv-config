@@ -7,7 +7,7 @@
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
-vim.opt.mouse=""
+vim.opt.mouse = ""
 
 -- general
 lvim.log.level = "info"
@@ -32,7 +32,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
--- lvim.colorscheme = "lunar"
+lvim.colorscheme = "habamax"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.alpha.active = true
@@ -128,6 +128,52 @@ lvim.plugins = {
     end,
   },
   { "p00f/nvim-ts-rainbow", },
+  {
+    "andymass/vim-matchup",
+    event = "CursorMoved",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
+  {
+    "ggandor/lightspeed.nvim",
+    event = "BufRead",
+  },
+  {
+    "Pocco81/auto-save.nvim",
+    config = function()
+      require("auto-save").setup()
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup({ "css", "scss", "html", "javascript" }, {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      })
+    end,
+  },
 }
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
@@ -140,30 +186,30 @@ lvim.plugins = {
 -- })
 
 -- -- Uncomment the following:
--- lvim.autocommands = {
---   {
---     {"BufEnter", "Filetype"},
---     {
---       desc = "Open mini.map and exclude some filetypes",
---       pattern = { "*" },
---       callback = function()
---         local exclude_ft = {
---           "qf",
---           "NvimTree",
---           "toggleterm",
---           "TelescopePrompt",
---           "alpha",
---           "netrw",
---         }
--- 
---         local map = require('mini.map')
---         if vim.tbl_contains(exclude_ft, vim.o.filetype) then
---           vim.b.minimap_disable = true
---           map.close()
---         elseif vim.o.buftype == "" then
---           map.open()
---         end
---       end,
---     },
---   },
--- }
+lvim.autocommands = {
+  {
+    { "BufEnter", "Filetype" },
+    {
+      desc = "Open mini.map and exclude some filetypes",
+      pattern = { "*" },
+      callback = function()
+        local exclude_ft = {
+          "qf",
+          "NvimTree",
+          "toggleterm",
+          "TelescopePrompt",
+          "alpha",
+          "netrw",
+        }
+
+        local map = require('mini.map')
+        if vim.tbl_contains(exclude_ft, vim.o.filetype) then
+          vim.b.minimap_disable = true
+          map.close()
+        elseif vim.o.buftype == "" then
+          map.open()
+        end
+      end,
+    },
+  },
+}
