@@ -194,6 +194,12 @@ lvim.plugins = {
     },
     ft = { "fugitive" }
   },
+  {
+    'ggandor/leap.nvim',
+    config = function()
+      require('leap').add_default_mappings()
+    end,
+  }
 }
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
