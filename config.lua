@@ -84,7 +84,27 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
     command = "prettier",
-    extra_args = { "--print-width", "100" },
+    extra_args = {
+      "--print-width", "80",
+      "--arrow-parens", "always",
+      "--bracket-spacing", "true",
+      "--bracket-same-line", "false",
+      "--embedded-language-formatting", "auto",
+      "--end-of-line", "lf",
+      "--html-whitespace-sensitivity", "css",
+      "--jsx-bracket-same-line", "false",
+      "--jsx-single-quote", "false",
+      "--print-width", "80",
+      "--prose-wrap", "preserve",
+      "--quote-props", "as-needed",
+      "--semi", "true",
+      "--single-attribute-per-line", "false",
+      "--single-quote", "false",
+      "--tab-width", "2",
+      "--trailing-comma", "es5",
+      "--use-tabs", "false",
+      "--vue-indent-script-and-style", "false"
+    },
     filetypes = { "typescript", "typescriptreact" },
   },
 }
@@ -120,8 +140,8 @@ lvim.plugins = {
         },
         window = {
           side = 'right',
-          width = 20, -- set to 1 for a pure scrollbar :)
-          winblend = 15,
+          width = 10, -- set to 1 for a pure scrollbar :)
+          winblend = 10,
           show_integration_count = false,
         },
       })
@@ -175,57 +195,87 @@ lvim.plugins = {
     end,
   },
   {
-    "windwp/nvim-spectre",
-    event = "BufRead",
+    requires = 'nvim-lua/plenary.nvim',
+    'TimUntersberger/neogit',
     config = function()
-      require("spectre").setup()
+      require("neogit").setup {
+        disable_signs = false,
+        disable_hint = false,
+        disable_context_highlighting = false,
+        disable_commit_confirmation = false,
+        -- Neogit refreshes its internal state after specific events, which can be expensive depending on the repository size.
+        -- Disabling `auto_refresh` will make it so you have to manually refresh the status after you open it.
+        auto_refresh = true,
+        disable_builtin_notifications = false,
+        use_magit_keybindings = false,
+        -- Change the default way of opening neogit
+        kind = "split",
+        -- Change the default way of opening the commit popup
+        commit_popup = {
+          kind = "split",
+        },
+        -- Change the default way of opening popups
+        popup = {
+          kind = "split",
+        },
+        -- customize displayed signs
+        signs = {
+          -- { CLOSED, OPENED }
+          section = { ">", "v" },
+          item = { ">", "v" },
+          hunk = { "", "" },
+        },
+        integrations = {
+          -- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `sindrets/diffview.nvim`.
+          -- The diffview integration enables the diff popup, which is a wrapper around `sindrets/diffview.nvim`.
+          --
+          -- Requires you to have `sindrets/diffview.nvim` installed.
+          -- use {
+          --   'TimUntersberger/neogit',
+          --   requires = {
+          --     'nvim-lua/plenary.nvim',
+          --     'sindrets/diffview.nvim'
+          --   }
+          -- }
+          --
+          diffview = false
+        },
+        -- Setting any section to `false` will make the section not render at all
+        sections = {
+          untracked = {
+            folded = false
+          },
+          unstaged = {
+            folded = false
+          },
+          staged = {
+            folded = false
+          },
+          stashes = {
+            folded = true
+          },
+          unpulled = {
+            folded = true
+          },
+          unmerged = {
+            folded = false
+          },
+          recent = {
+            folded = true
+          },
+        },
+        -- override/add mappings
+        mappings = {
+          -- modify status buffer mappings
+          status = {
+            -- Adds a mapping with "B" as key that does the "BranchPopup" command
+            ["B"] = "BranchPopup",
+            -- Removes the default mapping of "s"
+            -- ["s"] = "",
+          }
+        }
+      }
     end,
-  },
-  {
-    "tpope/vim-fugitive",
-    cmd = {
-      "G",
-      "Git",
-      "Gdiffsplit",
-      "Gread",
-      "Gwrite",
-      "Ggrep",
-      "GMove",
-      "GDelete",
-      "GBrowse",
-      "GRemove",
-      "GRename",
-      "Glgrep",
-      "Gedit"
-    },
-    ft = { "fugitive" }
-  },
-  {
-    'ggandor/leap.nvim',
-    config = function()
-      require('leap').add_default_mappings()
-    end,
-  },
-  {
-    "itchyny/vim-cursorword",
-    event = { "BufEnter", "BufNewFile" },
-    config = function()
-      vim.api.nvim_command("augroup user_plugin_cursorword")
-      vim.api.nvim_command("autocmd!")
-      vim.api.nvim_command("autocmd FileType NvimTree,lspsagafinder,dashboard,vista let b:cursorword = 0")
-      vim.api.nvim_command("autocmd WinEnter * if &diff || &pvw | let b:cursorword = 0 | endif")
-      vim.api.nvim_command("autocmd InsertEnter * let b:cursorword = 0")
-      vim.api.nvim_command("autocmd InsertLeave * let b:cursorword = 1")
-      vim.api.nvim_command("augroup END")
-    end
-  },
-  {
-    "tpope/vim-surround",
-
-    -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
-    -- setup = function()
-    --  vim.o.timeoutlen = 500
-    -- end
   },
   {
     "folke/persistence.nvim",
