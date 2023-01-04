@@ -10,6 +10,11 @@ On the development envrionment setup, my personal needs are:
 * <Space-sk> to show all the commands 
 * <Space-f> find files
 * <Space-e> show file explorers
+* <Space-Sc> restore the sessions at the last time
+* <Space-bj> jump between tabs
+* <C-h/j/k/l> jumping between windows
+* <zz> move current line to the center of screen
+* :Neogit for all the git stuff in neovim
 
 ## Machine setup
 *I use Ubuntu Linux(22.04 LTS) (as a guest OS) for the default development environment whatever the host OS is.*
@@ -19,14 +24,16 @@ On the development envrionment setup, my personal needs are:
 
 ## Development envrionment setup (Ubuntu operating system)
 
-### ZSH & byobu
+### ZSH & powerlevel10k theme & byobu
 ```bash
 # install zsh
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y zsh byobu
-# install OhMyZsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# install powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
+echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+# enable byobu autostart
 byobu-enable
 ```
 
@@ -52,6 +59,8 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 ### Aliases and PATH modifications in .zshrc
 ```zsh
 alias ls='exa'
+alias ll='ls -l'
+alias l='ll -a'
 export PATH=$PATH:$HOME/.local/bin:$HOME/.npm-global/bin
 ```
 
@@ -91,5 +100,6 @@ sudo update-alternatives --config editor
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 ```
 - Download config.lua and replace your $HOME/.config/lvim/config.lua with it.
+- Comment the autocmd
 - Run :PackerSync
-- Uncomment the autocmd
+- Restart lunarvim and uncomment the autocmd

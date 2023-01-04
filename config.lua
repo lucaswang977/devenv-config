@@ -312,7 +312,7 @@ lvim.plugins = {
 --   end,
 -- })
 
--- -- Uncomment the following:
+-- -- Comment the following before packer sync for the first time:
 lvim.autocommands = {
   {
     { "BufEnter", "Filetype" },
