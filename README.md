@@ -60,9 +60,21 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 
 ### Aliases and PATH modifications in .zshrc
 ```zsh
+# Reverse search in shell history
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt append_history
+setopt share_history
+setopt hist_ignore_all_dups
+
+# Aliases
 alias ls='exa'
 alias ll='ls -l'
 alias l='ll -a'
+alias vi='lvim'
+
+# Executive path setting
 export PATH=$PATH:$HOME/.local/bin:$HOME/.npm-global/bin
 ```
 
