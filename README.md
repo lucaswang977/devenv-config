@@ -8,13 +8,15 @@ On the development envrionment setup, my personal needs are:
 
 ### NeoVim with LunarVim
 * <Space-sk> to show all the commands 
+* <Space-Lc> open lunarvim's config file
 * <Space-f> find files
 * <Space-e> show file explorers
 * <Space-Sc> restore the sessions at the last time
 * <Space-bj> jump between tabs
+* <Space-ts> show all the todolist with telescope
 * <C-h/j/k/l> jumping between windows
 * <zz> move current line to the center of screen
-* :Neogit for all the git stuff in neovim
+* <C-g> open neogit for all the git stuff in neovim
 
 ## Machine setup
 *I use Ubuntu Linux(22.04 LTS) (as a guest OS) for the default development environment whatever the host OS is.*
