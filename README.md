@@ -17,6 +17,7 @@ On the development envrionment setup, my personal needs are:
 * <C-h/j/k/l> jumping between windows
 * <zz> move current line to the center of screen
 * <C-g> open neogit for all the git stuff in neovim
+* <C-s> open Telescope live_grep
 
 ## Machine setup
 *I use Ubuntu Linux(22.04 LTS) (as a guest OS) for the default development environment whatever the host OS is.*
