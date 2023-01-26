@@ -112,7 +112,7 @@ formatters.setup {
       "--use-tabs", "false",
       "--vue-indent-script-and-style", "false"
     },
-    filetypes = { "typescript", "typescriptreact" },
+    filetypes = { "typescript", "typescriptreact", "css" },
   },
 }
 -- local linters = require "lvim.lsp.null-ls.linters"
