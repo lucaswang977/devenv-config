@@ -36,6 +36,9 @@ sudo apt install -y zsh byobu
 # install powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
 echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+# install zsh-vi-mode
+git clone https://github.com/jeffreytse/zsh-vi-mode.git $HOME/.zsh-vi-mode
+echo 'source ~/.zsh-vi-mode/zsh-vi-mode.plugin.zsh' >>~/.zshrc
 # enable byobu autostart
 byobu-enable
 ```
