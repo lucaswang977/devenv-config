@@ -14,7 +14,7 @@ lvim.log.level = "info"
 lvim.format_on_save = {
   enabled = true,
   pattern = "*",
-  timeout = 1000,
+  timeout = 2000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -94,7 +94,7 @@ formatters.setup {
   {
     command = "prettier",
     extra_args = {
-      "--print-width", "80",
+      "--print-width", "100",
       "--arrow-parens", "always",
       "--bracket-spacing", "true",
       "--bracket-same-line", "false",
@@ -112,11 +112,12 @@ formatters.setup {
       "--tab-width", "2",
       "--trailing-comma", "es5",
       "--use-tabs", "false",
-      "--vue-indent-script-and-style", "false"
+      "--vue-indent-script-and-style", "false",
     },
-    filetypes = { "typescript", "typescriptreact", "css" },
+    filetypes = { "typescript", "typescriptreact", "css", "html" },
   },
 }
+
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
 --   { command = "flake8", filetypes = { "python" } },

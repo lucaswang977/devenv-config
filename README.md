@@ -88,7 +88,7 @@ curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
-npm install -g prettier emmet-ls
+npm install -g prettier emmet-ls prettier-plugin-tailwindcss
 ```
 
 ### [NeoVim stable version](https://github.com/neovim/neovim/wiki/Building-Neovim)
