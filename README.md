@@ -75,6 +75,7 @@ setopt hist_ignore_all_dups
 # Aliases
 alias ls='exa'
 alias ll='ls -l'
+alias lls='ls --sort=size -l'
 alias l='ll -a'
 alias vi='lvim'
 
