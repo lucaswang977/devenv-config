@@ -2,51 +2,26 @@
 - Setup Linux from Settings: Settings -> Developers -> Linux development environment -> Turn on
 - *Don't forget the username you inputted while creating this environment*
 
-## Change default Debian Linux container to Ubuntu
-
-**Create Ubuntu container**
-- Open the browser, press ctrl+alt+t to open Crosh
-- Power off the Linux container
-- Fetch Ubuntu container
+## Setting up Docker
+- Add Docker's official GPG key and setup the repo:
 ```bash
-vmc start termina
-lxc stop penguin --force
-lxc delete penguin
-lxc launch images:ubuntu/jammy penguin
-lxc exec penguin -- bash
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg 
+echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-**Setup Ubuntu**
-- System update and install required packages
+- Update the apt and install the latest version of Docker
 ```bash
-apt update
-apt install binutils gnupg
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
-
-- Setup Chrome container guest tool
-```bash
-echo "deb https://storage.googleapis.com/cros-packages bullseye main" > /etc/apt/sources.list.d/cros.list
-if [ -f /dev/.cros_milestone ]; then sudo sed -i "s?packages?packages/$(cat /dev/.cros_milestone)?" /etc/apt/sources.list.d/cros.list; fi
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 78BD65473CB3BD13
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
-apt update
-
-apt download cros-ui-config # ignore any warning messages
-ar x cros-ui-config_0.15_all.deb data.tar.gz
-gunzip data.tar.gz
-tar f data.tar --delete etc/gtk-3.0/settings.ini
-gzip data.tar
-ar r cros-ui-config_0.15_all.deb data.tar.gz
-rm data.tar.gz
-sudo apt install cros-guest-tools ./cros-ui-config_0.15_all.deb
-rm cros-ui-config_0.15_all.deb
-```
-
-- Shutdown the virtual machine and reboot
-```bash
-shutdown -h now
-```
-- Now you can start Linux as normal by clicking the terminal icon
 
 ## Setting NERD font
 *This setting can take effect after reboot, but will disappear once you open the Setting dialog of the terminal.*
