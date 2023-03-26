@@ -23,6 +23,13 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
+- Add current user to Docker's user group and don't forget to reboot
+```bash
+sudo usermod -aG docker $USER
+reboot
+```
+
+
 ## Setting NERD font
 *This setting can take effect after reboot, but will disappear once you open the Setting dialog of the terminal.*
 - Press Ctrl+Shift+J to open the developer console when the terminal window is focused.
