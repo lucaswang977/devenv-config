@@ -28,9 +28,10 @@ Setup a productive development environ is always a time wasting thing to me. Sin
 ```bash
 docker build -t webdev .
 docker volume create webdev-root
+mkdir share
 ```
 
 ### Start the container
 ```bash
-docker run -it --rm -v webdev-root:/root -w /root -p 5173:5173 -h webdev webdev
+docker run -it --rm --env="DISPLAY=host.docker.internal:0" -v share:/root/share -v webdev-root:/root -w /root -p 5173:5173 -h webdev webdev
 ```
