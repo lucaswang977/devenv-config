@@ -68,6 +68,9 @@ RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlev
 # Config Zsh
 COPY .zshrc /root/.zshrc
 
+# Config git
+COPY .gitconfig /root/.gitconfig
+
 # Update system
 RUN apt-get update && \
   apt-get install -y iputils-ping dnsutils net-tools x11-apps && \
