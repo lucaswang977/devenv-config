@@ -27,11 +27,11 @@ Setup a productive development environ is always a time wasting thing to me. Sin
   *Guest container's OS is Debian Bullseye slim.
 ```bash
 docker build -t webdev .
-docker volume create webdev-root
+docker volume create vroot
 mkdir share
 ```
 
 ### Start the container
 ```bash
-docker run -it --rm --env="DISPLAY=host.docker.internal:0" -v share:/root/share -v webdev-root:/root -w /root -p 5173:5173 -h webdev webdev
+docker run -it --rm --env="DISPLAY=host.docker.internal:0" -v share:/root/share -v vroot:/root -w /root -p 5173:5173 -h devenv webdev
 ```
