@@ -27,3 +27,7 @@ alias vi='lvim'
 
 # Executive path setting
 export PATH=$PATH:$HOME/.local/bin:$HOME/.npm-global/bin
+
+# Set git config
+git config user.email "118956159+lucaswang977@users.noreply.github.com"
+git config user.name "Lucas"

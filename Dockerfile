@@ -70,7 +70,7 @@ COPY .zshrc /root/.zshrc
 
 # Update system
 RUN apt-get update && \
-  apt-get install -y x11-apps && \
+  apt-get install -y iputils-ping dnsutils net-tools x11-apps && \
   apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
 
