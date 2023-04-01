@@ -71,9 +71,12 @@ COPY .zshrc /root/.zshrc
 # Config git
 COPY .gitconfig /root/.gitconfig
 
+# Python dev environment
+RUN pip3 install --user pipenv
+
 # Update system
 RUN apt-get update && \
-  apt-get install -y iputils-ping dnsutils net-tools x11-apps && \
+  apt-get install -y iputils-ping dnsutils net-tools x11-apps ffmpeg && \
   apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
 
