@@ -21,12 +21,6 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 
-RUN adduser -D -S -s /bin/zsh alpine && echo "alpine:abcdabcd" | chpasswd
-RUN chmod u+s /sbin/su-exec
-
-USER alpine
-WORKDIR /home/alpine
-
 RUN mkdir ~/.npm-global && \
   npm config set prefix '~/.npm-global' && \
   npm install -g prettier emmet-ls
@@ -51,5 +45,7 @@ ENV RUNNING_IN_DOCKER=true
 
 # Config Zsh
 RUN echo -e "\n# Reverse search in shell history\nHISTFILE=~/.zsh_history\nHISTSIZE=10000\nSAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\n\n# Executive path setting\nexport PATH=$PATH:$HOME/.local/bin:$HOME/.npm-global/bin" >> ~/.zshrc
+
+RUN sed -i 's/\/bin\/ash/\/bin\/zsh/' /etc/passwd
 
 CMD ["byobu"]
