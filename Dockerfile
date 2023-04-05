@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:latest
 
 # System utils
 RUN apk add --update musl-locales su-exec tzdata shadow zsh net-tools bind-tools curl wget unzip exa fzf fd bat ripgrep bottom
@@ -37,9 +37,6 @@ RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlev
   git clone https://github.com/jeffreytse/zsh-vi-mode.git $HOME/.zsh-vi-mode && \
   echo 'source ~/.zsh-vi-mode/zsh-vi-mode.plugin.zsh' >>~/.zshrc
 
-# Config Zsh
-COPY .zshrc ~/.zshrc
-
 # Config git
 COPY .gitconfig ~/.gitconfig
 
@@ -49,5 +46,10 @@ RUN pip3 install --user pipenv
 # Install AstroNvim
 RUN rm -rf ~/.config/nvim
 RUN git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+
+ENV RUNNING_IN_DOCKER=true
+
+# Config Zsh
+RUN echo -e "\n# Reverse search in shell history\nHISTFILE=~/.zsh_history\nHISTSIZE=10000\nSAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\n\n# Executive path setting\nexport PATH=$PATH:$HOME/.local/bin:$HOME/.npm-global/bin" >> ~/.zshrc
 
 CMD ["byobu"]
