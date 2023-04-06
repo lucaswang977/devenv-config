@@ -16,7 +16,7 @@ RUN git clone https://github.com/neovim/neovim.git --branch release-0.8 --depth 
   ln -s /usr/local/bin/nvim /usr/local/bin/vi && \
   ln -s /usr/local/bin/nvim /usr/local/bin/vim
 
-RUN apt-get install -y x11-apps ffmpeg
+RUN apt-get install -y xsel xclip ffmpeg
 
 RUN mkdir -p ~/.local/bin && \
   ln -s $(which batcat) ~/.local/bin/bat && \
