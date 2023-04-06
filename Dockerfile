@@ -4,7 +4,7 @@ FROM alpine:latest
 RUN apk add --update musl-locales bash tzdata shadow zsh net-tools bind-tools curl wget unzip exa fzf fd bat ripgrep bottom
 
 # Development related
-RUN apk add --update byobu nodejs npm neovim python3 py3-pip build-base github-cli jq
+RUN apk add --update build-base byobu nodejs npm neovim python3 py3-pip github-cli jq
 
 # Other utilities
 RUN apk add --update ffmpeg
@@ -31,10 +31,6 @@ RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlev
   git clone https://github.com/jeffreytse/zsh-vi-mode.git $HOME/.zsh-vi-mode && \
   echo 'source ~/.zsh-vi-mode/zsh-vi-mode.plugin.zsh' >>~/.zshrc
 
-# Python dev environment
-RUN pip3 install --user pipenv
-RUN curl https://pyenv.run | bash
-
 # Install AstroNvim
 RUN rm -rf ~/.config/nvim
 RUN git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
@@ -42,7 +38,7 @@ RUN git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 ENV RUNNING_IN_DOCKER=true
 
 # Config Zsh
-RUN echo -e "\n# Reverse search in shell history\nHISTFILE=~/.zsh_history\nHISTSIZE=10000\nSAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\n\n# Executive path setting\nexport PATH=$PATH:$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.pyenv/bin" >> ~/.zshrc
+RUN echo -e "\n# Reverse search in shell history\nHISTFILE=~/.zsh_history\nHISTSIZE=10000\nSAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\n\n# Executive path setting\nexport PATH=$PATH:$HOME/.npm-global/bin" >> ~/.zshrc
 
 # Change shell to zsh
 RUN sed -i 's/\/bin\/ash/\/bin\/zsh/' /etc/passwd
