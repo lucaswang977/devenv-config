@@ -16,11 +16,12 @@ I use Docker container to provide a separated environment for development. Befor
 Guest container's OS is Debian Bullseye slim.
 ```bash
 docker build -t webdev .
-docker volume create vroot
 mkdir share
 ```
 
 ## Start the container
 ```bash
-docker run -it --rm --env="DISPLAY=host.docker.internal:0" -v share:/root/share -v vroot:/root -w /root -p 5173:5173 -h devenv webdev
+docker run -d --name devenv --env="DISPLAY=host.docker.internal:0" -v /Users/lucas/tmp/share:/root/share -v vroot:/root -w /root -p 5173:5173 -p 2222:22 -h devenv webdev
+
+ssh root@localhost -p 2222
 ```
