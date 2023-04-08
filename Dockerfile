@@ -66,7 +66,7 @@ RUN pip3 install --user pipenv
 ENV RUNNING_IN_DOCKER=true
 
 # Config Zsh
-RUN echo "\n# Reverse search in shell history\nHISTFILE=~/.zsh_history\nHISTSIZE=10000\nSAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\n\n# Executive path setting\nexport PATH=$PATH:$HOME/.npm-global/bin:$HOME/.local/bin" >> ~/.zshrc
+RUN echo "\n# Reverse search in shell history\nexport HISTFILE=~/.zsh_history\nexport HISTSIZE=10000\nexport SAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\n\n# Executive path setting\nexport PATH=$PATH:$HOME/.npm-global/bin:$HOME/.local/bin\nexport DISPLAY=host.docker.internal:0" >> ~/.zshrc
 
 RUN apt-get update && apt-get upgrade -y
 
