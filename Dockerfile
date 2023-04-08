@@ -16,7 +16,7 @@ RUN git clone https://github.com/neovim/neovim.git --branch release-0.8 --depth 
   ln -s /usr/local/bin/nvim /usr/local/bin/vi && \
   ln -s /usr/local/bin/nvim /usr/local/bin/vim
 
-RUN apt-get install -y xsel xclip ffmpeg fonts-wqy-zenhei
+RUN apt-get install -y ffmpeg fonts-wqy-zenhei
 
 RUN mkdir -p ~/.local/bin && \
   ln -s $(which batcat) ~/.local/bin/bat && \
@@ -65,10 +65,14 @@ RUN pip3 install --user pipenv
 
 ENV RUNNING_IN_DOCKER=true
 
+# Config Clipboard between host and container
+RUN git clone https://github.com/ms-jpq/isomorphic_copy.git /root/.local/clipboard
+
 # Config Zsh
-RUN echo "\n# Reverse search in shell history\nexport HISTFILE=~/.zsh_history\nexport HISTSIZE=10000\nexport SAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\n\n# Executive path setting\nexport PATH=$PATH:$HOME/.npm-global/bin:$HOME/.local/bin\nexport DISPLAY=host.docker.internal:0" >> ~/.zshrc
+RUN echo "\n# Reverse search in shell history\nexport HISTFILE=~/.zsh_history\nexport HISTSIZE=10000\nexport SAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\n\n# Executive path setting\nexport PATH=$HOME/.local/clipboard/bin:$PATH:$HOME/.npm-global/bin:$HOME/.local/bin" >> ~/.zshrc
 
 RUN apt-get update && apt-get upgrade -y
+
 
 # Install SSH
 RUN apt-get install -y openssh-server
@@ -78,9 +82,11 @@ RUN echo 'root:password' | chpasswd && \
     mkdir /run/sshd
 RUN mkdir -p /root/.ssh && touch /root/.ssh/authorized_keys
 COPY macm1.pub /root/
+COPY chromebook.pub /root/
 RUN cat /root/macm1.pub >> /root/.ssh/authorized_keys
-RUN cat /root/macm1.pub >> /root/.ssh/authorized_keys
+RUN cat /root/chromebook.pub >> /root/.ssh/authorized_keys
 RUN rm /root/macm1.pub
+RUN rm /root/chromebook.pub
 RUN chmod 700 /root/.ssh && chmod 600 /root/.ssh/authorized_keys
 
 EXPOSE 22

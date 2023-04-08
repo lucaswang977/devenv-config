@@ -21,7 +21,16 @@ mkdir share
 
 ## Start the container
 ```bash
-docker run -d --name devenv --env="DISPLAY=host.docker.internal:0" -v /Users/lucas/tmp/share:/root/share -v vroot:/root -w /root -p 5173:5173 -p 2222:22 -h devenv webdev
+docker run -d --name devenv --env="DISPLAY=host.docker.internal:0" -v /Users/lucas/tmp/share:/root/share -v vroot:/root -w /root -p 5173:5173 -p 8822:22 -h devenv webdev
 
-ssh root@localhost -p 2222
+ssh root@localhost -p 8822
+```
+
+## Clipboard between the container and host
+Host:
+```
+mkdir ~/.local
+git clone https://github.com/ms-jpq/isomorphic_copy.git ~/.local/clipboard
+export PATH=$HOME/.local/clipboard/bin:$PATH
+cssh root@localhost -p 8822
 ```
