@@ -70,4 +70,19 @@ RUN echo "\n# Reverse search in shell history\nHISTFILE=~/.zsh_history\nHISTSIZE
 
 RUN apt-get update && apt-get upgrade -y
 
-CMD ["byobu"]
+# Install SSH
+RUN apt-get install -y openssh-server
+RUN echo 'root:password' | chpasswd && \
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config && \
+    mkdir /run/sshd
+RUN mkdir -p /root/.ssh && touch /root/.ssh/authorized_keys
+COPY macm1.pub /root/
+RUN cat /root/macm1.pub >> /root/.ssh/authorized_keys
+RUN cat /root/macm1.pub >> /root/.ssh/authorized_keys
+RUN rm /root/macm1.pub
+RUN chmod 700 /root/.ssh && chmod 600 /root/.ssh/authorized_keys
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
