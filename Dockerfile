@@ -28,7 +28,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
 
 RUN mkdir ~/.npm-global && \
   npm config set prefix '~/.npm-global' && \
-  npm install -g prettier emmet-ls
+  npm install -g yarn prettier emmet-ls
 
 # Setup timezone & locales
 RUN apt-get install -y locales
@@ -37,7 +37,6 @@ RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US:en
 ENV LC_ALL=en_US.UTF-8
-
 
 # Install GitHub CLI
 RUN type -p curl >/dev/null || apt install curl -y && \
@@ -59,7 +58,7 @@ RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlev
 # Install AstroNvim
 RUN rm -rf ~/.config/nvim
 RUN git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-
+RUN git clone https://github.com/lucaswang977/astronvim-config.git ~/.config/nvim/lua/user
 RUN pip3 install --user pipenv
 
 ENV RUNNING_IN_DOCKER=true
