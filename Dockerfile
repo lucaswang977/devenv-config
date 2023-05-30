@@ -6,8 +6,8 @@ RUN apt-get install -y curl zsh wget unzip exa fzf fd-find bat ripgrep htop iput
 
 RUN apt-get install -y build-essential git cmake gettext libtool-bin autoconf automake pkg-config byobu python3 python3-pip jq
 
-# Build Neovim 0.8
-RUN git clone https://github.com/neovim/neovim.git --branch release-0.8 --depth 1 && \
+# Build Neovim stable
+RUN git clone https://github.com/neovim/neovim.git --branch stable --depth 1 && \
   cd neovim && \
   make CMAKE_BUILD_TYPE=Release && \
   make install && \
