@@ -1,0 +1,30 @@
+version: '3'
+services:
+  localdb:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: localdbpassword
+      MYSQL_DATABASE: testdb
+    ports:
+      - 3306:3306
+  devenv:
+    build: .
+    restart: always
+    ports:
+      - 3000:3000
+      - 3001:3001
+      - 3002:3002
+      - 8822:22
+    depends_on:
+      - localdb
+    volumes:
+      - ${HOME}/share:/root/share
+      - vroot:/root
+    environment:
+      DB_HOST: localdb
+      DB_USER: root
+      DB_PASSWORD: localdbpassword
+      DB_NAME: testdb
+volumes:
+  vroot:

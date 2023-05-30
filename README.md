@@ -15,14 +15,12 @@ I use Docker container to provide a separated environment for development. Befor
 ## Guest development envrionment setup (based on Dockerfile)
 Guest container's OS is Debian Bullseye slim.
 ```bash
-docker build -t webdev .
-mkdir share
+mkdir $HOME/share
 ```
 
-## Start the container
+## Start the containers
 ```bash
-docker run -d --name devenv --env="DISPLAY=host.docker.internal:0" -v /Users/lucas/tmp/share:/root/share -v vroot:/root -w /root -p 5173:5173 -p 8822:22 -h devenv webdev
-
+docker compose up -d
 ssh root@localhost -p 8822
 ```
 
