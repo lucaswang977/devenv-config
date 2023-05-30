@@ -1,13 +1,14 @@
 version: '3'
 services:
   localdb:
-    image: mysql
+    image: postgres
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: localdbpassword
-      MYSQL_DATABASE: testdb
+      POSTGRES_PASSWORD: localdbpassword
+      POSTGRES_USER: puser
+      POSTGRES_DB: testdb
     ports:
-      - 3306:3306
+      - 5432:5432
   devenv:
     build: .
     restart: always
@@ -15,16 +16,12 @@ services:
       - 3000:3000
       - 3001:3001
       - 3002:3002
+      - 3003:3003
       - 8822:22
     depends_on:
       - localdb
     volumes:
       - ${HOME}/share:/root/share
       - vroot:/root
-    environment:
-      DB_HOST: localdb
-      DB_USER: root
-      DB_PASSWORD: localdbpassword
-      DB_NAME: testdb
 volumes:
   vroot:
