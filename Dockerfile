@@ -39,7 +39,7 @@ RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen
 # Config Zsh
 RUN echo "\n# Reverse search in shell history\nexport HISTFILE=~/.zsh_history\nexport HISTSIZE=10000\nexport SAVEHIST=10000\nsetopt append_history\nsetopt share_history\nsetopt hist_ignore_all_dups\n" >> ~/.zshrc
 RUN echo "\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\nalias npm='pnpm'\nalias npx='pnpx'\n"  >> ~/.zshrc
-RUN echo "\n# Executive path setting\nexport PATH=$HOME/.local/clipboard/bin:$PATH:$HOME/.npm-global/bin:$HOME/.local/bin\nexport DISPLAY=host.docker.internal:0\n\nexport LC_ALL=en_US.UTF-8\nexport LANG=en_US.UTF-8\nexport LANGUAGE=en_US.UTF-8\n" >> ~/.zshrc
+RUN echo "\n# Executive path setting\nexport PATH=$HOME/.local/clipboard/bin:$PATH:$HOME/.npm-global/bin:$HOME/.local/bin\nexport DISPLAY=host.docker.internal:0\n\nexport LC_ALL=en_US.UTF-8\nexport LANG=en_US.UTF-8\nexport LANGUAGE=en_US.UTF-8\nexport EDITOR=vim\n" >> ~/.zshrc
 
 # Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
