@@ -2,7 +2,7 @@ FROM debian:stable-slim
 
 RUN apt-get update
 
-RUN apt-get install -y curl zsh wget telnet unzip exa fzf fd-find bat ripgrep htop iputils-ping dnsutils net-tools
+RUN apt-get install -y curl apt-utils apt-file ca-certificates gnupg zsh wget telnet unzip exa fzf fd-find bat ripgrep htop iputils-ping dnsutils net-tools
 
 RUN apt-get install -y build-essential git cmake gettext libtool-bin autoconf automake pkg-config byobu python3 python3-pip jq
 
@@ -43,9 +43,9 @@ RUN echo "\n# Executive path setting\nexport PATH=$HOME/.local/clipboard/bin:$PA
 RUN echo "\nexport PNPM_HOME=$HOME/.local/share/pnpm\n"  >> ~/.zshrc
 
 # Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
-  apt-get update && \
-  apt-get install -y nodejs
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+RUN NODE_MAJOR=18; echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+RUN apt-get update; apt-get install nodejs -y
 
 # Install Yarn & PNPM
 RUN mkdir ~/.npm-global && \
@@ -64,13 +64,14 @@ RUN type -p curl >/dev/null || apt install curl -y && \
 RUN rm -rf ~/.config/nvim
 RUN git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 RUN git clone https://github.com/lucaswang977/astronvim-config.git ~/.config/nvim/lua/user
+RUN vi --headless +qa
 
 ENV RUNNING_IN_DOCKER=true
 
 # Config Clipboard between host and container
 RUN git clone https://github.com/ms-jpq/isomorphic_copy.git /root/.local/clipboard
 
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y && apt-file update
 
 # Install SSH
 RUN apt-get install -y openssh-server
