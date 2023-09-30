@@ -4,7 +4,7 @@ RUN apt-get update
 
 RUN apt-get install -y curl apt-utils apt-file ca-certificates gnupg zsh wget telnet unzip exa fzf fd-find bat ripgrep htop iputils-ping dnsutils net-tools
 
-RUN apt-get install -y build-essential git cmake gettext libtool-bin autoconf automake pkg-config byobu python3 python3-pip jq
+RUN apt-get install -y build-essential git cmake gettext libtool-bin autoconf automake pkg-config tmux python3 python3-pip jq
 
 # Build Neovim stable
 RUN git clone https://github.com/neovim/neovim.git --branch stable --depth 1 && \
@@ -71,17 +71,22 @@ ENV RUNNING_IN_DOCKER=true
 # Config Clipboard between host and container
 RUN git clone https://github.com/ms-jpq/isomorphic_copy.git /root/.local/clipboard
 
+# Setup tmux
+RUN git clone https://github.com/gpakosz/.tmux.git /root/.local/.tmux
+RUN ln -s /root/.local/.tmux/.tmux.conf /root/.tmux.conf
+COPY configs/tmux.conf.local /root/.tmux.conf.local
+
 RUN apt-get update && apt-get upgrade -y && apt-file update
 
-# Install SSH
+# Install SSH & login with credentials
 RUN apt-get install -y openssh-server
 RUN echo 'root:password' | chpasswd && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config && \
     mkdir /run/sshd
 RUN mkdir -p /root/.ssh && touch /root/.ssh/authorized_keys
-COPY macm1.pub /root/
-COPY chromebook.pub /root/
+COPY pubkeys/macm1.pub /root/
+COPY pubkeys/chromebook.pub /root/
 RUN cat /root/macm1.pub >> /root/.ssh/authorized_keys
 RUN cat /root/chromebook.pub >> /root/.ssh/authorized_keys
 RUN rm /root/macm1.pub
