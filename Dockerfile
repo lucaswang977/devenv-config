@@ -16,8 +16,6 @@ RUN git clone https://github.com/neovim/neovim.git --branch stable --depth 1 && 
   ln -s /usr/local/bin/nvim /usr/local/bin/vi && \
   ln -s /usr/local/bin/nvim /usr/local/bin/vim
 
-RUN apt-get install -y ffmpeg fonts-wqy-zenhei
-
 RUN mkdir -p ~/.local/bin && \
   ln -s $(which batcat) ~/.local/bin/bat && \
   ln -s $(which fdfind) ~/.local/bin/fd
