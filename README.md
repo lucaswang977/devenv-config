@@ -32,11 +32,11 @@ ssh root@localhost -p 8822
 ### Container Setup
 - GitHub Authorization
 - Git global config
- - git config --global user.name "XXX"
- - git config --global user.email "YYY"
+  - git config --global user.name "XXX"
+  - git config --global user.email "YYY"
 - LSP and TreeSitter when using Nvim
- - :LspInstall tsserver
- - :TSInstall typescript
+  - :LspInstall tsserver
+  - :TSInstall typescript
 
 ## Optional Tools
 - Clipboard sharing between the host and guest machines.
