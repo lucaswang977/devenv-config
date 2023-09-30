@@ -18,7 +18,7 @@ services:
       - 3002:3002
       - 1337:1337
       - 5173:5173
-      - 8822:23
+      - 8822:22
     depends_on:
       - localdb
     volumes:
