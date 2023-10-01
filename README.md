@@ -98,6 +98,7 @@ docker compose up -d
 
 ### Shortcuts should be remembered
 - Tmux
+
 | Shortcuts  |           Action          |
 |------------|---------------------------|
 | C-a -      | Split window vertically   |
@@ -105,6 +106,7 @@ docker compose up -d
 | C-a TAB    | Jump between two tabs     |
 
 - AstroNvim default [key mappings](https://astronvim.com/Basic%20Usage/mappings)
+
 | Shortcuts  |               Action                |
 |------------|-------------------------------------|
 | Space lS   | Toggle function list (LSP needed)   |
