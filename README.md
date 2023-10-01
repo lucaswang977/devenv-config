@@ -1,4 +1,6 @@
-# Development Environtment Setting Goals
+# My Development Environtment Setup Guide
+
+## Note
 Setting up a productive development environment is always a time wasting thing to me. I have two computers(one is Mac Mini M1, and the other is an old Chromebook) with different operating systems. 
 Here are my personal requirements:
 * It should provide the same development(Linux + NeoVim) experience across those computers;
@@ -8,8 +10,8 @@ Here are my personal requirements:
 To meet the requirements, I choose Docker to provide the separated environment for development. 
 
 ### Host Computer Minimalist Setup
-- [ChromeOS with Docker](chromeos-setup.md)
-- [MacOSX with Docker desktop](macosx-setup.md)
+- [ChromeOS Setup](chromeos-setup.md)
+- [MacOSX Setup](macosx-setup.md)
 
 ### Docker Container Building
 - Create share folder between host and guest machines.
@@ -57,7 +59,7 @@ cssh root@localhost -p 8822
 - [PNPM](https://pnpm.io/) as the default node package management
 - GitHub CLI
 - Tmux as the default terminal multiplexer with [Oh my tmux!](https://github.com/gpakosz/.tmux)
-- No password SSH login with pubkeys (in this folder /pubkeys)
+- SSH login with credentials (trusted host's pubkeys are in /pubkeys)
 - Separated PostgreSQL database container on port 5432 (hostname "localdb")
 - $HOME/share of the host machine is shared as /root/share
 
@@ -94,6 +96,15 @@ docker compose up -d
 - If you want to add plugins from [AstroNvim Community](https://github.com/AstroNvim/astrocommunity), edit this /plugins/community.lua
 - If you want to import plugins manually, edit this file /plugins/user.lua
 
-### Keystrokes should be remembered
+### Shortcuts should be remembered
 - Tmux
+| Shortcuts  |           Action          |
+|------------|---------------------------|
+| C-a -      | Split window vertically   |
+| C-a _      | Split window horizontally |
+| C-a TAB    | Jump between two tabs     |
+
 - AstroNvim default [key mappings](https://astronvim.com/Basic%20Usage/mappings)
+| Shortcuts  |               Action                |
+|------------|-------------------------------------|
+| Space lS   | Toggle function list (LSP needed)   |

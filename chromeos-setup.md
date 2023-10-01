@@ -1,4 +1,6 @@
-# ChromeOS Linux Terminal Setup
+# ChromeOS Host Machine Preparing
+
+## Setting up Linux
 - Setup Linux from Settings: Settings -> Developers -> Linux development environment -> Turn on
 - *Don't forget the username you inputted while creating this environment*
 
@@ -28,7 +30,6 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo usermod -aG docker $USER
 reboot
 ```
-
 
 ## Setting NERD font
 *This setting can take effect after reboot, but will disappear once you open the Setting dialog of the terminal.*
