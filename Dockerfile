@@ -39,6 +39,8 @@ RUN echo "\n# Reverse search in shell history\nexport HISTFILE=~/.zsh_history\ne
 RUN echo "\n# Aliases\nalias ls='exa'\nalias ll='ls -l'\nalias l='ll -al'\nalias vi='nvim'\nalias cat='bat'\nalias npm='pnpm'\nalias npx='pnpx'\n"  >> ~/.zshrc
 RUN echo "\n# Executive path setting\nexport PATH=$HOME/.local/clipboard/bin:$PATH:$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.local/share/pnpm\nexport DISPLAY=host.docker.internal:0\n\nexport LC_ALL=en_US.UTF-8\nexport LANG=en_US.UTF-8\nexport LANGUAGE=en_US.UTF-8\nexport EDITOR=vim\n" >> ~/.zshrc
 RUN echo "\nexport PNPM_HOME=$HOME/.local/share/pnpm\n"  >> ~/.zshrc
+RUN echo "\nexport PNPM_HOME=$HOME/.local/share/pnpm\n"  >> ~/.zshrc
+RUN echo "\nif [ -z \"$TMUX\" ]; then\n  exec tmux new-session -A -s devenv\n fi\n" >> ~/.zshrc
 
 # Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
