@@ -99,11 +99,13 @@ docker compose up -d
 ### Important Keystrokes
 - Tmux
 
-| Shortcuts  |           Action          |
-|------------|---------------------------|
-| C-a -      | Split window vertically   |
-| C-a _      | Split window horizontally |
-| C-a TAB    | Jump between two tabs     |
+| Shortcuts   |           Action          |
+|-------------|---------------------------|
+| C-a -       | Split window vertically   |
+| C-a _       | Split window horizontally |
+| C-a TAB     | Jump between two tabs     |
+| C-a h/j/k/l | Jump different panes      |
+| C-a H/J/K/L | Resize current pane       |
 
 - AstroNvim default [key mappings](https://astronvim.com/Basic%20Usage/mappings)
 
