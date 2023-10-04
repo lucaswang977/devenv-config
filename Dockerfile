@@ -41,10 +41,7 @@ RUN echo "\n# Executive path setting\nexport PATH=$HOME/.local/clipboard/bin:$PA
 RUN echo "\nexport PNPM_HOME=$HOME/.local/share/pnpm\n"  >> ~/.zshrc
 
 # Autostarts tmux
-RUN echo "\nif [ -z \"$TMUX\" ]; then\n  exec tmux new-session -A -s devenv\n fi\n" >> ~/.zshrc
-
-# Avoid run p10k configure automatically, this will force tmux exit
-RUN echo "\nexport POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true\n"  >> ~/.zshrc
+RUN echo "\nif [ -z \"\$TMUX\" ]; then\n  exec tmux new-session -A -s devenv\n fi\n" >> ~/.zshrc
 
 # Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
