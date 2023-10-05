@@ -46,7 +46,8 @@ ssh root@localhost -p 8822
 mkdir ~/.local
 git clone https://github.com/ms-jpq/isomorphic_copy.git ~/.local/clipboard
 export PATH=$HOME/.local/clipboard/bin:$PATH
-cssh root@localhost -p 8822
+
+cssh root@localhost -p 8822 &>/dev/null &
 ```
 
 ## Notes
