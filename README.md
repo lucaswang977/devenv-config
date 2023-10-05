@@ -42,12 +42,17 @@ ssh root@localhost -p 8822
 
 ## Optional Tools
 - Clipboard sharing between the host and guest machines.
-```
+```bash
 mkdir ~/.local
 git clone https://github.com/ms-jpq/isomorphic_copy.git ~/.local/clipboard
 export PATH=$HOME/.local/clipboard/bin:$PATH
 
 cssh root@localhost -p 8822 &>/dev/null &
+```
+
+- Start clipboard tunnel automatically every time ssh is executing
+```bash
+cssh root@localhost -p 8822 &>/dev/null & ; PID=$! ; ssh root@localhost -p 8822 ; kill -2 $PID
 ```
 
 ## Notes
