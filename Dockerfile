@@ -2,7 +2,7 @@ FROM debian:stable-slim
 
 RUN apt-get update
 
-RUN apt-get install -y curl apt-utils apt-file ca-certificates gnupg zsh wget telnet unzip exa fzf fd-find bat ripgrep htop iputils-ping dnsutils net-tools
+RUN apt-get install -y curl apt-utils apt-file ca-certificates gnupg zsh wget telnet unzip exa fzf fd-find bat ripgrep htop iputils-ping dnsutils net-tools coreutils gawk
 
 RUN apt-get install -y build-essential git cmake gettext libtool-bin autoconf automake pkg-config tmux python3 python3-pip jq
 
