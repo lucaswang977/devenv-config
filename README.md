@@ -50,7 +50,7 @@ export PATH=$HOME/.local/clipboard/bin:$PATH
 cssh root@localhost -p 8822 &>/dev/null &
 ```
 
-- Start clipboard tunnel automatically every time ssh is executing
+- Start clipboard tunnel automatically every time logging into container using ssh
 ```bash
 cssh root@localhost -p 8822 &>/dev/null & ; PID=$! ; ssh root@localhost -p 8822 ; kill -2 $PID
 ```
@@ -65,6 +65,7 @@ cssh root@localhost -p 8822 &>/dev/null & ; PID=$! ; ssh root@localhost -p 8822 
 - [PNPM](https://pnpm.io/) as the default node package management
 - GitHub CLI
 - [Tmux](https://github.com/tmux/tmux/wiki) as the default terminal multiplexer with [Oh my tmux!](https://github.com/gpakosz/.tmux)
+- [Glow](https://github.com/ellisonleao/glow.nvim) for markdown preview in console and neovim
 - SSH login with credentials (trusted host's pubkeys are in /pubkeys)
 - Separated PostgreSQL database container on port 5432 (hostname "localdb")
 - $HOME/share of the host machine is shared as /root/share

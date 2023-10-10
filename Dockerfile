@@ -78,9 +78,14 @@ RUN git clone https://github.com/gpakosz/.tmux.git /root/.local/.tmux
 RUN ln -s /root/.local/.tmux/.tmux.conf /root/.tmux.conf
 COPY configs/tmux.conf.local /root/.tmux.conf.local
 
+# Install glow for markdown preview
+RUN curl -fsSL https://repo.charm.sh/apt/gpg.key | gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+RUN echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | tee /etc/apt/sources.list.d/charm.list
+RUN apt-get update && apt-get install glow -y
+
 COPY configs/.apikeys.zsh /root/.apikeys.zsh
 
-RUN apt-get update && apt-get upgrade -y && apt-file update
+RUN apt-file update
 
 # Install SSH & login with credentials
 RUN apt-get install -y openssh-server
