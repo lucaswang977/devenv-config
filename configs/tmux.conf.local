@@ -421,7 +421,8 @@ set -g @plugin 'xamut/tmux-weather'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 set-option -g @tmux-weather-location "Osaka"
-set-option -g @tmux-weather-format "%l:+%c+%f+%w+%p+%h+%u"
+set-option -g @tmux-weather-format "%l:+%c+%t+%w+%p+%h+%u"
+set-option -g @tmux-weather-interval 10
 
 # -- custom variables ----------------------------------------------------------
 
