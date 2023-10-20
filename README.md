@@ -52,7 +52,7 @@ cssh root@localhost -p 8822 &>/dev/null &
 
 - Start clipboard tunnel automatically every time logging into container using ssh
 ```bash
-cssh root@localhost -p 8822 &>/dev/null & ; PID=$! ; ssh root@localhost -p 8822 ; kill -2 $PID
+cssh root@localhost -p 8822 &>/dev/null & PID=$! ; ssh root@localhost -p 8822 ; kill -2 $PID
 ```
 
 ## Notes
