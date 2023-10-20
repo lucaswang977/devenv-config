@@ -56,6 +56,25 @@ cssh root@localhost -p 8822 &>/dev/null & ; PID=$! ; ssh root@localhost -p 8822 
 ```
 
 ## Notes
+### Personal data settings
+- Create .myvars.zsh in $HOME and paste this in, change the variables.
+
+```bash
+# OpenAI API key setting for using ChatGPT in Nvim
+export OPENAI_API_KEY=<xxx>
+
+# Set annoying git commit info
+if [[ -z $(git config --global user.name) ]]; then
+  git config --global user.name "<Your Name>"
+fi
+if [[ -z $(git config --global user.email) ]]; then
+  git config --global user.email "<Your Github Commits Specified Email>"
+fi
+
+# Tmux weather plugin city
+export TMUX_WEATHER_CITY=<The City Name You Live>
+```
+
 ### What is in the container?
 - Debian stable slim with build-essentials and a whole bunch of useful tools as exa, ripgrep, etc.
 - [Stable version Neovim](https://github.com/neovim/neovim.git) built from source
