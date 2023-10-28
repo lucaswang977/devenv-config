@@ -99,6 +99,7 @@ $env.NU_PLUGIN_DIRS = [
 
 # Common environment settings
 $env.EDITOR = "nvim"
+$env.DISPLAY = "host.docker.internal:0"
 
 # Homebrew environment variables
 $env.HOMEBREW_PREFIX = "/home/linuxbrew/.linuxbrew"
