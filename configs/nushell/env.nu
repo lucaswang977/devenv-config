@@ -101,15 +101,5 @@ $env.NU_PLUGIN_DIRS = [
 $env.EDITOR = "nvim"
 $env.DISPLAY = "host.docker.internal:0"
 
-# Homebrew environment variables
-$env.HOMEBREW_PREFIX = "/home/linuxbrew/.linuxbrew"
-$env.HOMEBREW_CELLAR = "/home/linuxbrew/.linuxbrew/Cellar"
-$env.HOMEBREW_REPOSITORY = "/home/linuxbrew/.linuxbrew/Homebrew"
-$env.MANPATH = "/home/linuxbrew/.linuxbrew/share/man"
-$env.INFOPATH = "/home/linuxbrew/.linuxbrew/share/info"
-
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/root/.local/clipboard/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/sbin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/opt/node@20/bin')
+# $env.PATH = ($env.PATH | split row (char esep) | prepend '/root/.local/bin')
