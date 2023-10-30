@@ -16,8 +16,11 @@ RUN rm /root/chromebook.pub
 RUN chmod 600 /root/.ssh/authorized_keys
 
 RUN pacman -S --noconfirm neovim nushell zellij
-RUN pacman -S --noconfirm nodejs prettier pnpm
+RUN pacman -S --noconfirm nodejs npm
 RUN pacman -S --noconfirm github-cli
+RUN mkdir ~/.npm-global && \
+  npm config set prefix '~/.npm-global' && \
+  npm install -g pnpm prettier
 
 # Config neovim
 RUN rm -rf ~/.config/nvim
@@ -27,6 +30,13 @@ RUN nvim --headless +qa
 # Config zellij
 RUN mkdir -p /root/.config/zellij
 COPY configs/zellij/config.kdl /root/.config/zellij/
+
+# Config starship
+RUN pacman -S --noconfirm starship
+RUN mkdir ~/.cache/starship
+COPY configs/starship/init.nu /root/.cache/starship/init.nu
+RUN mkdir ~/.config/starship
+COPY configs/starship/starship.toml /root/.config/starship/
 
 # Config nushell
 RUN mkdir -p /root/.config/nushell

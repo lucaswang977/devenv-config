@@ -757,3 +757,6 @@ $env.config = {
 
 alias vi = nvim
 alias vim = nvim
+alias npm = pnpm
+
+use ~/.cache/starship/init.nu
