@@ -760,6 +760,7 @@ alias vim = nvim
 alias npm = pnpm
 
 use ~/.cache/starship/init.nu
+source ~/.zoxide.nu
 
 def start_zellij [] {
   if 'ZELLIJ' not-in ($env | columns) {

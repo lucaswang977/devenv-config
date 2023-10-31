@@ -34,9 +34,13 @@ COPY configs/zellij/config.kdl /root/.config/zellij/
 # Config starship
 RUN pacman -S --noconfirm starship
 RUN mkdir ~/.cache/starship
-COPY configs/starship/init.nu /root/.cache/starship/init.nu
+RUN starship init nu > ~/.cache/starship/init.nu
 RUN mkdir ~/.config/starship
 COPY configs/starship/starship.toml /root/.config/starship/
+
+# Config zoxide
+RUN pacman -S --noconfirm zoxide
+RUN zoxide init nushell > ~/.zoxide.nu
 
 # Config nushell
 RUN mkdir -p /root/.config/nushell
