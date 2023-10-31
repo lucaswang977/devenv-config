@@ -758,6 +758,7 @@ $env.config = {
 alias vi = nvim
 alias vim = nvim
 alias npm = pnpm
+alias npx = pnpx
 
 use ~/.cache/starship/init.nu
 source ~/.zoxide.nu
