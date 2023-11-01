@@ -17,7 +17,7 @@ RUN chmod 600 /root/.ssh/authorized_keys
 
 RUN pacman -S --noconfirm neovim nushell zellij
 RUN pacman -S --noconfirm nodejs npm
-RUN pacman -S --noconfirm github-cli
+RUN pacman -S --noconfirm github-cli glow
 RUN mkdir ~/.npm-global && \
   npm config set prefix '~/.npm-global' && \
   npm install -g pnpm prettier
