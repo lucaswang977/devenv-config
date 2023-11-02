@@ -17,7 +17,7 @@ RUN chmod 600 /root/.ssh/authorized_keys
 
 RUN pacman -S --noconfirm neovim nushell zellij
 RUN pacman -S --noconfirm nodejs npm
-RUN pacman -S --noconfirm github-cli glow
+RUN pacman -S --noconfirm github-cli glow stylua
 RUN mkdir ~/.npm-global && \
   npm config set prefix '~/.npm-global' && \
   npm install -g pnpm prettier
@@ -30,6 +30,7 @@ RUN nvim --headless +qa
 # Config zellij
 RUN mkdir -p /root/.config/zellij
 COPY configs/zellij/config.kdl /root/.config/zellij/
+COPY configs/zellij/layout.kdl /root/.config/zellij/
 
 # Config starship
 RUN pacman -S --noconfirm starship
