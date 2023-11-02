@@ -1,7 +1,8 @@
 version: '3'
 services:
-  localdb:
+  pgdb:
     image: postgres
+    container_name: pgdb
     restart: always
     environment:
       POSTGRES_PASSWORD: localdbpassword
@@ -9,9 +10,25 @@ services:
       POSTGRES_DB: testdb
     ports:
       - 5432:5432
+    volumes:
+      - vpgdb:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: always
+    ports:
+      - 18080:80
+    volumes:
+      - vpgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@abcd.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    depends_on:
+      - pgdb
   devenv:
     build: .
     restart: always
+    container_name: devenv
     ports:
       - 3000:3000
       - 3001:3001
@@ -20,9 +37,11 @@ services:
       - 5173:5173
       - 8822:22
     depends_on:
-      - localdb
+      - pgdb
     volumes:
       - ${HOME}/share:/root/share
       - vroot:/root
 volumes:
   vroot:
+  vpgdb:
+  vpgadmin:
