@@ -768,7 +768,7 @@ def start_zellij [] {
     if 'ZELLIJ_AUTO_ATTACH' in ($env | columns) and $env.ZELLIJ_AUTO_ATTACH == 'true' {
       zellij attach -c
     } else {
-      zellij -l ~/.config/zellij/layout.kdl
+      zellij -l ~/.config/zellij/layout.kdl options --default-mode locked
     }
 
     if 'ZELLIJ_AUTO_EXIT' in ($env | columns) and $env.ZELLIJ_AUTO_EXIT == 'true' {
