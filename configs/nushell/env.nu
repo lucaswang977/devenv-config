@@ -102,6 +102,7 @@ $env.EDITOR = "nvim"
 $env.DISPLAY = "host.docker.internal:0"
 $env.STARSHIP_CONFIG = "/root/.config/starship/starship.toml"
 $env.TZ = ":/usr/share/zoneinfo/Asia/Tokyo"
+$env.ZELLIJ_AUTO_ATTACH = "true"
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/root/.npm-global/bin')
