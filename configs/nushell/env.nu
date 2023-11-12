@@ -98,6 +98,9 @@ $env.NU_PLUGIN_DIRS = [
 ]
 
 # Common environment settings
+$env.LC_ALL = "en_US.UTF-8"
+$env.LANG = "en_US.UTF-8"
+$env.LANGUAGE = "en_US.UTF-8"
 $env.EDITOR = "nvim"
 $env.DISPLAY = "host.docker.internal:0"
 $env.STARSHIP_CONFIG = "/root/.config/starship/starship.toml"

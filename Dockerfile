@@ -15,7 +15,7 @@ RUN rm /root/macm1.pub
 RUN rm /root/chromebook.pub
 RUN chmod 600 /root/.ssh/authorized_keys
 
-RUN pacman -S --noconfirm neovim nushell zellij
+RUN pacman -S --noconfirm neovim nushell zellij ripgrep fd unzip wget
 RUN pacman -S --noconfirm nodejs npm
 RUN pacman -S --noconfirm github-cli glow stylua
 RUN mkdir ~/.npm-global && \
