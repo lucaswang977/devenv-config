@@ -77,12 +77,21 @@ docker compose down
 docker compose build
 ```
 
-- (On the host) Remove the volume
+- (On the host) Remove the volume (optional if you update the updated config files inside the container manually)
+```bash
+docker volume rm devenv-config_vroot
+```
+
+- (On the host) Remove the ssh known hosts
+```bash
+rm ~/.ssh/known_hosts
+```
 
 - (On the host in the repo folder) Start the container
 ```bash
 docker compose up -d
 ```
+
 ### Memo
 - Clipboard sharing between host and guest is by using OSC52 supported terminal emulators.
 - Nushell & starship & zellij configuration files are included in this repository.
@@ -107,14 +116,14 @@ docker compose up -d
 | :Glow         | Markdown file preview                   |
 
 ## History
-- Phase 3 (2023.10, current): 
+- Phase 3 (2023.10, current)
   - Docker with ManjaroLinux.
   - Neovim was fetched from the OS package repo. Neovim configured from scratch.
   - Nushell + Zellij as the default shell and multiplexer.
-- Phase 2 (2023.6): 
+- Phase 2 (2023.6)
   - Docker with Debian Bullseye slim.
   - Neovim was built from source, LunarVim/Astronvim was used as the default nvim setting.
   - Byobu / tmux was used as the multiplexer.
-- Phase 1 (2022.12): 
+- Phase 1 (2022.12)
   - Canonical multipass on Mac and customized linux container on ChromeOS
   - Neovim was built from source.
