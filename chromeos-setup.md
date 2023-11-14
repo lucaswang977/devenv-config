@@ -34,8 +34,8 @@ reboot
 ## Setting NERD font
 *This setting can take effect after reboot, but will disappear once you open the Setting dialog of the terminal.*
 - Press Ctrl+Shift+J to open the developer console when the terminal window is focused.
-- Input following code
+- Paste in the following code
 ```javascript
-term_.prefs_.set('font-family', 'DejaVu Sans Mono Nerd');
-term_.prefs_.set('user-css-text', '@font-face {font-family: "DejaVu Sans Mono Nerd"; src: url("https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf"); font-weight: normal; font-style: normal;}')
+term_.prefs_.set('font-family', 'JetBrainsMono Nerd');
+term_.prefs_.set('user-css-text', '@font-face {font-family: "JetBrainsMono Nerd"; src: url("https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFontMono-Regular.ttf"); font-weight: normal; font-style: normal;}')
 ```
