@@ -96,6 +96,7 @@ docker compose up -d
 - Clipboard sharing between host and guest is by using OSC52 supported terminal emulators.
 - Nushell & starship & zellij configuration files are included in this repository.
 - Zellij keystrokes are shown on the user interface already, we don't have to remember them.
+- Docker command is also installed in the container and the docker.sock from the host machine is mounted to the guest, so we can control the docker directly inside the guest (for the e2e testing purpose).
 
 ### Important Keystrokes
 - Neovim
