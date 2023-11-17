@@ -40,17 +40,11 @@ services:
       - pgdb
     volumes:
       - ${HOME}/share:/root/share
+      - vwork:/root/work
       - vroot:/root
       - /var/run/docker.sock:/var/run/docker.sock
-  cypress:
-    image: cypress/included:latest
-    container_name: cypress
-    restart: always
-    entrypoint: tail -f /dev/null
-    platform: linux/amd64
-    volumes:
-      - vroot:/root/e2e
 volumes:
   vroot:
   vpgdb:
   vpgadmin:
+  vwork:
