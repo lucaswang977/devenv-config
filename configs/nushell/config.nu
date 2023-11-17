@@ -765,7 +765,7 @@ source ~/.zoxide.nu
 
 def start_zellij [] {
   if 'ZELLIJ' not-in ($env | columns) {
-    if 'ZELLIJ_AUTO_ATTACH' in ($env | columns) and $env.ZELLIJ_AUTO_ATTACH == 'true' and (not (zellij list-sessions | lines | is-empty)) {
+    if 'ZELLIJ_AUTO_ATTACH' in ($env | columns) and $env.ZELLIJ_AUTO_ATTACH == 'true' and (not (zellij list-sessions | lines | where ($it !~ "EXITED") | is-empty)) {
       zellij attach -c
     } else {
       zellij -l ~/.config/zellij/layout.kdl options --default-mode locked
