@@ -7,10 +7,11 @@ services:
     environment:
       POSTGRES_PASSWORD: localdbpassword
       POSTGRES_USER: puser
-      POSTGRES_DB: testdb
+      POSTGRES_MULTIPLE_DATABASES: testdb,testdb1,testdb2
     ports:
       - 5432:5432
     volumes:
+      - ./configs/pg-multi-db:/docker-entrypoint-initdb.d
       - vpgdb:/var/lib/postgresql/data
   pgadmin:
     image: dpage/pgadmin4:latest
