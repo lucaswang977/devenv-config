@@ -110,6 +110,7 @@ docker compose up -d
 | Space e       | Open the file explorer                  |
 | Space ff      | Telescope for opening files             |
 | Space fg      | Telescope for grepping files            |
+| Space ft      | Telescope for TODO/FIX commments        |
 | Ctrl+up/down  | Move line/block up/down a line          |
 | gc            | Toggle commment                         |
 | :LspInstall   | Install LSP server                      |
