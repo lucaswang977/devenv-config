@@ -44,6 +44,13 @@ git config --global user.email "YYY"
 git config --global pull.rebase true
   ```
 
+- Environment variables
+```bash
+vi ~/.config/nushell/myenv.nu
+# Add custom env vars as this
+# $env.FOO = "BAR"
+```
+
 ## Notes
 
 ### What are included in the container?

@@ -47,6 +47,7 @@ RUN zoxide init nushell > ~/.zoxide.nu
 RUN mkdir -p /root/.config/nushell
 COPY configs/nushell/config.nu /root/.config/nushell/
 COPY configs/nushell/env.nu /root/.config/nushell/
+COPY configs/nushell/myenv.nu /root/.config/nushell/
 RUN chsh -s /bin/nu
 
 EXPOSE 22
