@@ -66,12 +66,13 @@ vi ~/.config/nushell/myenv.nu
 - Separated PostgreSQL database container on port 5432 (hostname "localdb") and [pgAdmin](https://www.pgadmin.org/) on port 18080 for DB management.
 - $HOME/share of the host machine is shared as /root/share
 
-### Container Exported Ports
-- 3000, 3001 (NextJS)
-- 1337 (Strapi admin)
-- 5173 (Vite)
-- 8822 (bridge with local port 22, for sshd)
-- 18080 (pgAdmin)
+### Containers && Exported Ports
+- 3000, 3001, 3002 (devenv, NextJS)
+- 5173 (devenv, Vite)
+- 6006 (devenv, Storybook)
+- 8822 (devenv, bridge with local port 22, for sshd)
+- 5432 (pgdb, postreSQL)
+- 18080 (pgadmin, pgAdmin)
 
 ### How to update the container?
 - (On the host in the repo folder) Stop the container
