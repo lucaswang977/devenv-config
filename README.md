@@ -62,6 +62,7 @@ vi ~/.config/nushell/myenv.nu
 - GitHub CLI
 - [Zellij](https://zellij.dev/) as the default terminal multiplexer.
 - [Glow](https://github.com/ellisonleao/glow.nvim) for markdown preview in console and neovim
+- Prettier, Stylua & jq for prettify the code and data.
 - SSH login with credentials (trusted host's pubkeys are in /pubkeys)
 - Separated PostgreSQL database container on port 5432 (hostname "localdb") and [pgAdmin](https://www.pgadmin.org/) on port 18080 for DB management.
 - $HOME/share of the host machine is shared as /root/share

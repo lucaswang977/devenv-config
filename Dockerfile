@@ -17,7 +17,7 @@ RUN chmod 600 /root/.ssh/authorized_keys
 
 RUN pacman -S --noconfirm neovim nushell zellij ripgrep fd unzip wget docker
 RUN pacman -S --noconfirm nodejs-lts-hydrogen npm
-RUN pacman -S --noconfirm github-cli glow stylua
+RUN pacman -S --noconfirm github-cli glow stylua jq
 RUN mkdir ~/.npm-global && \
   npm config set prefix '~/.npm-global' && \
   npm install -g pnpm prettier
