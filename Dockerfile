@@ -16,7 +16,7 @@ RUN rm /root/chromebook.pub
 RUN chmod 600 /root/.ssh/authorized_keys
 
 RUN pacman -S --noconfirm neovim nushell zellij ripgrep fd unzip wget docker
-RUN pacman -S --noconfirm nodejs-lts-hydrogen npm
+RUN pacman -S --noconfirm nodejs-lts-iron npm
 RUN pacman -S --noconfirm github-cli glow stylua jq
 RUN mkdir ~/.npm-global && \
   npm config set prefix '~/.npm-global' && \
@@ -41,7 +41,7 @@ COPY configs/starship/starship.toml /root/.config/starship/
 
 # Config zoxide
 RUN pacman -S --noconfirm zoxide
-RUN zoxide init nushell > ~/.zoxide.nu
+COPY configs/zoxide/zoxide.nu /root/.zoxide.nu
 
 # Config nushell
 RUN mkdir -p /root/.config/nushell
