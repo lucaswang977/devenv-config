@@ -9,10 +9,13 @@ RUN echo 'root:password' | chpasswd && \
     mkdir /run/sshd
 COPY pubkeys/macm1.pub /root/
 COPY pubkeys/chromebook.pub /root/
+COPY pubkeys/win11.pub /root/
 RUN cat /root/macm1.pub > /root/.ssh/authorized_keys
 RUN cat /root/chromebook.pub >> /root/.ssh/authorized_keys
+RUN cat /root/win11.pub >> /root/.ssh/authorized_keys
 RUN rm /root/macm1.pub
 RUN rm /root/chromebook.pub
+RUN rm /root/win11.pub
 RUN chmod 600 /root/.ssh/authorized_keys
 
 RUN pacman -S --noconfirm neovim nushell zellij ripgrep fd unzip wget docker
