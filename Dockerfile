@@ -25,6 +25,10 @@ RUN mkdir ~/.npm-global && \
   npm config set prefix '~/.npm-global' && \
   npm install -g pnpm prettier
 
+# Install cloud service client
+RUN pacman -S --noconfirm python-pipx
+RUN pipx install aws-cli azure-cli
+
 # Config neovim
 RUN rm -rf ~/.config/nvim
 RUN git clone https://github.com/lucaswang977/nvim-config.git ~/.config/nvim

@@ -108,5 +108,6 @@ $env.ZELLIJ_AUTO_ATTACH = "true"
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/root/.npm-global/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/root/.local/bin')
 
 source /root/.config/nushell/myenv.nu
