@@ -27,7 +27,8 @@ RUN mkdir ~/.npm-global && \
 
 # Install cloud service client
 RUN pacman -S --noconfirm python-pipx
-RUN pipx install aws-cli azure-cli
+RUN pipx install awscli
+RUN pipx install azure-cli
 
 # Config neovim
 RUN rm -rf ~/.config/nvim
