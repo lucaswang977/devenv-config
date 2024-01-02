@@ -2,6 +2,7 @@
 
 ## Description
 Setting up a productive development environment is always a time wasting thing to me. I am usually using two computers (one Mac Mini M1 and an old Pixelbook), which have different architecture (x86 & arm64) and operating systems.
+*(I recently bought a new Windows 11 laptop to replace my old Chromebook, so the setup procedure for Windows 11 has also been updated.)*
 
 Here are my personal requirements for setting up development environment:
 * It should provide the same development(Linux + NeoVim) experience across those computers;
@@ -13,6 +14,7 @@ To meet the requirements, I choose using Docker to provide the separated environ
 ### Host Computer Minimalist Setup
 - [ChromeOS Setup](chromeos-setup.md)
 - [MacOSX Setup](macosx-setup.md)
+- [Windows11 Setup](win11-setup.md)
 
 ### Docker Container Building
 - Create share folder between host and guest machines.
@@ -66,6 +68,7 @@ vi ~/.config/nushell/myenv.nu
 - SSH login with credentials (trusted host's pubkeys are in /pubkeys)
 - Separated PostgreSQL database container on port 5432 (hostname "localdb") and [pgAdmin](https://www.pgadmin.org/) on port 18080 for DB management.
 - $HOME/share of the host machine is shared as /root/share
+- AWS client & Azure command line client
 
 ### Containers && Exported Ports
 - 3000, 3001, 3002 (devenv, NextJS)
