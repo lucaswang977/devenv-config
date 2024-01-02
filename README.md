@@ -56,7 +56,7 @@ vi ~/.config/nushell/myenv.nu
 ## Notes
 
 ### What are included in the container?
-- ManjaroLinux (manjarolinux/build:latest, unofficial image) because it can provide consistent experience between x86 and arm64.
+- Archlinux (archlinux:base-devel, official image)
 - [Stable version Neovim](https://github.com/neovim/neovim.git) with [self-configured dotfiles](https://github.com/lucaswang977/nvim-config).
 - [Nushell](https://www.nushell.sh/) and [Starship](https://starship.rs/) customizable prompt.
 - Nodejs version 20 installed with pacman
@@ -130,8 +130,8 @@ docker compose up -d
 | :Glow         | Markdown file preview                   |
 
 ## History
-- Phase 3 (2023.10, current)
-  - Docker with ManjaroLinux.
+- Phase 3 (2023.12, current)
+  - Docker with Archlinux.
   - Neovim was fetched from the OS package repo. Neovim configured from scratch.
   - Nushell + Zellij as the default shell and multiplexer.
 - Phase 2 (2023.6)

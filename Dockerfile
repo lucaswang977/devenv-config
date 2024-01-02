@@ -1,7 +1,7 @@
-FROM manjarolinux/build:latest
+FROM archlinux:base-devel
 
 RUN pacman -Syy
-RUN pacman -S --noconfirm openssh
+RUN pacman -S --noconfirm openssh git
 RUN /usr/bin/ssh-keygen -A
 RUN echo 'root:password' | chpasswd && \
     sed -i -e 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
