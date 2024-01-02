@@ -17,6 +17,8 @@ RUN rm /root/macm1.pub
 RUN rm /root/chromebook.pub
 RUN rm /root/win11.pub
 RUN chmod 600 /root/.ssh/authorized_keys
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+RUN locale-gen
 
 RUN pacman -S --noconfirm neovim nushell zellij ripgrep fd unzip wget docker
 RUN pacman -S --noconfirm nodejs-lts-iron npm

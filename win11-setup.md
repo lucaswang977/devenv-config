@@ -3,7 +3,7 @@
 ## Setting up Windows Terminal
 * Save $HOME environmental variable
 ```
-Set-Item -Path Env:\HOME -Value 'C:\Users\lucas'
+Setx HOME 'C:\Users\lucas'
 ```
 
 * Nerd font installation
